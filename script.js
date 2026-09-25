@@ -271,12 +271,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalAvailability) modalAvailability.textContent = product.availability;
         if (modalDescription) modalDescription.textContent = product.description;
         
-        // Setup WhatsApp Button
+        // Setup Modal Enquire Button to scroll to B2B Form
         if (modalEnquireBtn) {
-            const whatsappNumber = "917050211778";
-            const message = encodeURIComponent(`Hello, I would like to enquire about the following product:\n\nProduct: ${product.name}\nCategory: ${product.category}\n\nPlease provide further information.`);
             modalEnquireBtn.onclick = () => {
-                window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+                closeModal();
+                const enqProductInput = document.getElementById('enqProduct');
+                if (enqProductInput) {
+                    enqProductInput.value = `${product.name} (${product.category})`;
+                }
+                const enquiryForm = document.getElementById('enquiryFormCard');
+                if (enquiryForm) {
+                    enquiryForm.scrollIntoView({ behavior: 'smooth' });
+                }
             };
         }
 
@@ -309,4 +315,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial Render
     renderProducts();
+
+    // --- STAGE 2: B2B Enquiry & FAQ Logic ---
+
+    // FAQ Toggles
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('i');
+            
+            const isOpen = answer.style.display === 'block';
+            
+            // Close all open answers within faq-container
+            document.querySelectorAll('.faq-answer').forEach(ans => ans.style.display = 'none');
+            document.querySelectorAll('.faq-question i').forEach(i => {
+                i.classList.remove('fa-chevron-up');
+                i.classList.add('fa-chevron-down');
+            });
+
+            if (!isOpen) {
+                answer.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        });
+    });
+
+    // B2B Form Submission via WhatsApp
+    const b2bForm = document.getElementById('b2bEnquiryForm');
+    if (b2bForm) {
+        b2bForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('enqName').value.trim();
+            const company = document.getElementById('enqCompany').value.trim();
+            const phone = document.getElementById('enqPhone').value.trim();
+            const email = document.getElementById('enqEmail').value.trim();
+            const product = document.getElementById('enqProduct').value.trim();
+            const quantity = document.getElementById('enqQuantity').value.trim();
+            const message = document.getElementById('enqMessage').value.trim();
+
+            let waText = `Hello North India Pharma,\n\nI would like to enquire about the following.\n\n`;
+            if (product) waText += `Product: ${product}\n`;
+            waText += `Name: ${name}\n`;
+            if (company) waText += `Company: ${company}\n`;
+            waText += `Phone: ${phone}\n`;
+            if (email) waText += `Email: ${email}\n`;
+            if (quantity) waText += `Required Quantity: ${quantity}\n`;
+            waText += `\nRequirement:\n${message}\n\nPlease provide further information.`;
+
+            const whatsappNumber = "917050211778";
+            const encodedText = encodeURIComponent(waText);
+            
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, '_blank');
+        });
+    }
 });
