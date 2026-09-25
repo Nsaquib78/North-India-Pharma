@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinksItems = navLinks.querySelectorAll('a');
 
     hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+        const isActive = navLinks.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isActive);
         const icon = hamburger.querySelector('i');
-        if (navLinks.classList.contains('active')) {
+        if (isActive) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-xmark');
         } else {
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinksItems.forEach(item => {
         item.addEventListener('click', () => {
             navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
             const icon = hamburger.querySelector('i');
             icon.classList.remove('fa-xmark');
             icon.classList.add('fa-bars');
@@ -260,13 +262,19 @@ document.addEventListener('DOMContentLoaded', () => {
         enquiryListToggle.addEventListener('click', (e) => {
             e.preventDefault();
             enquiryDrawer.style.right = '0';
+            enquiryListToggle.setAttribute('aria-expanded', 'true');
             enquiryDrawerOverlay.style.display = 'block';
             setTimeout(() => enquiryDrawerOverlay.style.opacity = '1', 10);
+            
+            // Trap focus roughly or set focus to drawer
+            const closeBtn = document.getElementById('closeEnquiryDrawer');
+            if(closeBtn) setTimeout(() => closeBtn.focus(), 300);
         });
     }
     
     function closeDrawer() {
         enquiryDrawer.style.right = '-400px';
+        if (enquiryListToggle) enquiryListToggle.setAttribute('aria-expanded', 'false');
         enquiryDrawerOverlay.style.opacity = '0';
         setTimeout(() => enquiryDrawerOverlay.style.display = 'none', 300);
     }
@@ -525,6 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         productModal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        if(closeModalBtn) setTimeout(() => closeModalBtn.focus(), 100);
     }
 
     function closeModal() {
@@ -574,6 +583,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // FAQ Toggles
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
+        // Initialize aria-expanded
+        question.setAttribute('aria-expanded', 'false');
+        
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
             const icon = question.querySelector('i');
@@ -582,6 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Close all open answers within faq-container
             document.querySelectorAll('.faq-answer').forEach(ans => ans.style.display = 'none');
+            document.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded', 'false'));
             document.querySelectorAll('.faq-question i').forEach(i => {
                 i.classList.remove('fa-chevron-up');
                 i.classList.add('fa-chevron-down');
@@ -589,6 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!isOpen) {
                 answer.style.display = 'block';
+                question.setAttribute('aria-expanded', 'true');
                 icon.classList.remove('fa-chevron-down');
                 icon.classList.add('fa-chevron-up');
             }
@@ -665,6 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeElements.forEach(el => {
             appearOnScroll.observe(el);
         });
+    } else {
         fadeElements.forEach(el => el.classList.add('appear'));
     }
 
@@ -677,27 +692,29 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: "-100px 0px -100px 0px"
     };
 
-    const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                let currentId = entry.target.getAttribute('id');
-                navItems.forEach(link => {
-                    link.classList.remove('active-nav');
-                    if (link.getAttribute('href') === `#${currentId}`) {
-                        link.classList.add('active-nav');
-                    }
-                });
+    if ('IntersectionObserver' in window) {
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    let currentId = entry.target.getAttribute('id');
+                    navItems.forEach(link => {
+                        link.classList.remove('active-nav');
+                        if (link.getAttribute('href') === `#${currentId}`) {
+                            link.classList.add('active-nav');
+                        }
+                    });
+                }
+            });
+        }, navObserverOptions);
+
+        sections.forEach(section => {
+            if (section.getAttribute('id')) {
+                navObserver.observe(section);
             }
         });
-    }, navObserverOptions);
+    }
 
-    sections.forEach(section => {
-        if (section.getAttribute('id')) {
-            navObserver.observe(section);
-        }
-    });
-
-    // Support keyboard escape for modal and drawer
+    // Support keyboard escape for modal and drawer and nav
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (productModal && productModal.classList.contains('active')) {
@@ -705,6 +722,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (enquiryDrawer && enquiryDrawer.style.right === '0px') {
                 closeDrawer();
+            }
+            if (navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+                const icon = hamburger.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
             }
         }
     });
