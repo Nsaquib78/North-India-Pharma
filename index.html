@@ -106,40 +106,49 @@
     <section id="about" class="bg-light">
         <div class="container fade-in">
             <div class="about-grid">
-                <div class="about-visual">
-                    <div class="visual-layer layer-bg"></div>
-                    <div class="visual-layer layer-pattern"></div>
-                    <div class="visual-icons">
-                        <div class="v-icon main-icon"><i class="fa-solid fa-flask"></i></div>
-                        <div class="v-icon sub-icon-1"><i class="fa-solid fa-pills"></i></div>
-                        <div class="v-icon sub-icon-2"><i class="fa-solid fa-truck-medical"></i></div>
-                    </div>
+                <div class="about-visual" style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; background: white;">
+                    <img src="https://placehold.co/800x800/f8fafc/0A3D6B?text=Professional+Pharmaceutical+Environment" alt="Professional Pharmaceutical Environment" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="about-text">
-                    <h2 style="text-align: left; margin-bottom: 0.5rem; color: var(--primary-blue);">About North India Pharma</h2>
-                    <p style="font-size: 1.1rem; color: var(--secondary-green); font-weight: 500; margin-bottom: 1.5rem;">Professional pharmaceutical services and dependable product distribution.</p>
-                    <p>North India Pharma provides pharmaceutical products and professional customer service for customers and healthcare-related businesses. With a commitment to quality, transparency, and customer satisfaction, the company aims to build long-term relationships through dependable service and responsible business practices.</p>
+                    <span class="hero-eyebrow" style="color: var(--secondary-green); font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">ABOUT NORTH INDIA PHARMA</span>
+                    <h2 style="text-align: left; margin-bottom: 1rem; color: var(--primary-blue);">Professional Pharmaceutical Products & Service</h2>
+                    <p style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 1.5rem;">North India Pharma is a pharmaceutical business focused on providing pharmaceutical products and professional service to customers and healthcare-related businesses.</p>
+                    <p style="margin-bottom: 2rem;">With a commitment to quality, transparency, and customer satisfaction, our team ensures reliable communication and dependable service tailored to your business needs.</p>
                     
-                    <div class="about-info-card">
-                        <div class="info-item">
-                            <i class="fa-solid fa-building"></i>
-                            <div>
-                                <span class="info-label">Company</span>
-                                <strong>North India Pharma</strong>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;">
+                        <a href="#products" class="btn btn-primary">Explore Products</a>
+                        <a href="#contact" class="btn btn-secondary">Send an Enquiry</a>
+                    </div>
+                    
+                    <div class="about-info-card" style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem;">
+                            <div class="info-item" style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <i class="fa-solid fa-building" style="color: var(--secondary-green); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <span class="info-label" style="display: block; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Company</span>
+                                    <strong style="color: var(--primary-blue);">North India Pharma</strong>
+                                </div>
                             </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fa-solid fa-user-tie"></i>
-                            <div>
-                                <span class="info-label">Owner</span>
-                                <strong>Md Abu Amir</strong>
+                            <div class="info-item" style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <i class="fa-solid fa-user-tie" style="color: var(--secondary-green); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <span class="info-label" style="display: block; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Owner</span>
+                                    <strong style="color: var(--primary-blue);">Md Abu Amir</strong>
+                                </div>
                             </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <div>
-                                <span class="info-label">Location</span>
-                                <strong>Rani Bagh, Simri Bakhtiyarpur, Near Bajaj show room, Saharsa, Bihar - 852127</strong>
+                            <div class="info-item" style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <i class="fa-solid fa-phone" style="color: var(--secondary-green); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <span class="info-label" style="display: block; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Phone</span>
+                                    <strong style="color: var(--primary-blue);">7050211778</strong>
+                                </div>
+                            </div>
+                            <div class="info-item" style="display: flex; align-items: flex-start; gap: 1rem;">
+                                <i class="fa-solid fa-location-dot" style="color: var(--secondary-green); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <span class="info-label" style="display: block; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Location</span>
+                                    <strong style="color: var(--primary-blue); font-size: 0.95rem;">Rani Bagh, Simri Bakhtiyarpur, Near Bajaj show room, Saharsa, Bihar - 852127</strong>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -194,105 +203,103 @@
     </section>
 
     <!-- Quality & Service Section -->
-    <section id="quality" class="bg-light" style="position: relative; overflow: hidden;">
+    <section id="quality" class="bg-light" style="position: relative; overflow: hidden; padding-bottom: 2rem;">
         <div class="bg-shape"></div>
         <div class="container fade-in" style="position: relative; z-index: 2;">
-            <h2>Quality & Service</h2>
-            <p class="section-subtitle">Our commitment to responsible business practices and customer care.</p>
-            
-            <div class="quality-grid">
-                <div class="quality-card">
-                    <div class="quality-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4>Quality-Focused Approach</h4>
-                    <p>Focused on maintaining dependable products and responsible business practices.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center; margin-bottom: 5rem;">
+                <div>
+                    <span class="hero-eyebrow" style="color: var(--secondary-green); font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">OUR APPROACH</span>
+                    <h2 style="text-align: left; margin-bottom: 1rem; color: var(--primary-blue);">Quality & Service</h2>
+                    <p style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 1.5rem;">Our commitment to responsible business practices and customer care.</p>
+                    <p>At North India Pharma, we focus on understanding customer needs and providing dependable service. We aim to build lasting professional relationships based on trust and reliable product information.</p>
                 </div>
-                <div class="quality-card">
-                    <div class="quality-icon"><i class="fa-solid fa-truck-fast"></i></div>
-                    <h4>Reliable Service</h4>
-                    <p>Providing dependable service with a professional approach to customer needs.</p>
+                <div class="quality-grid" style="margin-top: 0;">
+                    <div class="quality-card" style="padding: 1.5rem;">
+                        <div class="quality-icon" style="margin-bottom: 1rem;"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4 style="margin-bottom: 0.5rem;">Quality-Focused Approach</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Focused on maintaining dependable products and responsible business practices.</p>
+                    </div>
+                    <div class="quality-card" style="padding: 1.5rem;">
+                        <div class="quality-icon" style="margin-bottom: 1rem;"><i class="fa-solid fa-truck-fast"></i></div>
+                        <h4 style="margin-bottom: 0.5rem;">Reliable Service</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Providing dependable service with a professional approach to customer needs.</p>
+                    </div>
+                    <div class="quality-card" style="padding: 1.5rem;">
+                        <div class="quality-icon" style="margin-bottom: 1rem;"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <h4 style="margin-bottom: 0.5rem;">Transparent Communication</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Committed to clear and responsible communication in all business dealings.</p>
+                    </div>
+                    <div class="quality-card" style="padding: 1.5rem;">
+                        <div class="quality-icon" style="margin-bottom: 1rem;"><i class="fa-solid fa-headset"></i></div>
+                        <h4 style="margin-bottom: 0.5rem;">Professional Support</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Helping customers with product enquiries and business-related assistance.</p>
+                    </div>
                 </div>
-                <div class="quality-card">
-                    <div class="quality-icon"><i class="fa-solid fa-headset"></i></div>
-                    <h4>Professional Support</h4>
-                    <p>Helping customers with product enquiries and business-related assistance.</p>
+            </div>
+
+            <!-- Business Process -->
+            <div style="margin-bottom: 5rem;">
+                <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 3rem; font-size: 2rem;">Business Workflow</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;">
+                        <div style="color: var(--secondary-green); font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">01</div>
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-blue);">Product Enquiry</h4>
+                        <p style="color: var(--text-light); font-size: 0.95rem;">Customer selects a product or sends a requirement.</p>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;">
+                        <div style="color: var(--secondary-green); font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">02</div>
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-blue);">Requirement Discussion</h4>
+                        <p style="color: var(--text-light); font-size: 0.95rem;">The enquiry is reviewed and relevant information can be discussed.</p>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;">
+                        <div style="color: var(--secondary-green); font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">03</div>
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-blue);">Product Information</h4>
+                        <p style="color: var(--text-light); font-size: 0.95rem;">Product-related information can be provided based on the enquiry.</p>
+                    </div>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;">
+                        <div style="color: var(--secondary-green); font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">04</div>
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-blue);">Customer Support</h4>
+                        <p style="color: var(--text-light); font-size: 0.95rem;">The customer receives professional assistance regarding the enquiry.</p>
+                    </div>
                 </div>
-                <div class="quality-card">
-                    <div class="quality-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-                    <h4>Transparent Practices</h4>
-                    <p>Committed to clear and responsible communication in business dealings.</p>
-                </div>
-                <div class="quality-card">
-                    <div class="quality-icon"><i class="fa-solid fa-face-smile"></i></div>
-                    <h4>Customer Satisfaction</h4>
-                    <p>Focused on understanding customer needs and providing dependable service.</p>
-                </div>
-                <div class="quality-card">
-                    <div class="quality-icon"><i class="fa-solid fa-people-group"></i></div>
-                    <h4>Long-Term Relationships</h4>
-                    <p>Aiming to build lasting professional relationships based on trust and reliability.</p>
+            </div>
+
+            <!-- Corporate Trust Presentation -->
+            <div style="background: linear-gradient(135deg, var(--primary-blue), #1e293b); border-radius: 16px; padding: 4rem 2rem; color: white; text-align: center;">
+                <h3 style="color: white; margin-bottom: 3rem; font-size: 2rem;">Professional Business Values</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem;">
+                    <div style="flex: 1; min-width: 150px;">
+                        <i class="fa-solid fa-comments" style="font-size: 2.5rem; color: var(--secondary-green); margin-bottom: 1rem;"></i>
+                        <h4 style="color: white; font-size: 1.1rem; margin-bottom: 0.5rem;">Professional Communication</h4>
+                    </div>
+                    <div style="flex: 1; min-width: 150px;">
+                        <i class="fa-solid fa-users" style="font-size: 2.5rem; color: var(--secondary-green); margin-bottom: 1rem;"></i>
+                        <h4 style="color: white; font-size: 1.1rem; margin-bottom: 0.5rem;">Customer-Focused Service</h4>
+                    </div>
+                    <div style="flex: 1; min-width: 150px;">
+                        <i class="fa-solid fa-handshake" style="font-size: 2.5rem; color: var(--secondary-green); margin-bottom: 1rem;"></i>
+                        <h4 style="color: white; font-size: 1.1rem; margin-bottom: 0.5rem;">Reliable Business Interaction</h4>
+                    </div>
+                    <div style="flex: 1; min-width: 150px;">
+                        <i class="fa-solid fa-file-contract" style="font-size: 2.5rem; color: var(--secondary-green); margin-bottom: 1rem;"></i>
+                        <h4 style="color: white; font-size: 1.1rem; margin-bottom: 0.5rem;">Clear Product Information</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Company / Owner Information -->
-    <section id="company">
-        <div class="container fade-in">
-            <h2>Company Information</h2>
-            
-            <div class="contact-container" style="margin-top: 3rem;">
-                <!-- Owner & Location Card -->
-                <div class="contact-info-card" style="background: linear-gradient(135deg, var(--primary-blue), #1e293b); color: white;">
-                    <div style="margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 0 auto 2rem;">
-                        <i class="fa-solid fa-user" style="font-size: 3rem; color: white;"></i>
-                    </div>
-                    <h3 style="text-align: center; color: white; margin-bottom: 0.5rem;">Md Abu Amir</h3>
-                    <p style="text-align: center; color: rgba(255,255,255,0.8); margin-bottom: 2rem;">Owner, North India Pharma</p>
-                    
-                    <div class="contact-item" style="color: white;">
-                        <div class="contact-icon" style="background: rgba(255,255,255,0.2); color: white;">
-                            <i class="fa-solid fa-building"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4 style="color: white;">Company</h4>
-                            <p style="color: rgba(255,255,255,0.8); margin: 0;">North India Pharma</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item" style="color: white;">
-                        <div class="contact-icon" style="background: rgba(255,255,255,0.2); color: white;">
-                            <i class="fa-solid fa-map-location-dot"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4 style="color: white;">Location</h4>
-                            <p style="color: rgba(255,255,255,0.8); margin: 0;">Rani Bagh, Simri Bakhtiyarpur, Near Bajaj show room, Saharsa, Bihar - 852127</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Location / Map area -->
-                <div class="contact-form-card" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                    <i class="fa-solid fa-map" style="font-size: 4rem; color: var(--secondary-green); margin-bottom: 1.5rem;"></i>
-                    <h3>Visit North India Pharma</h3>
-                    <p style="margin: 1.5rem 0;">
-                        Rani Bagh, Simri Bakhtiyarpur, Near Bajaj show room, Saharsa, Bihar - 852127
-                    </p>
-                    <a href="https://maps.app.goo.gl/a9A2ZgifeidnqjgS6?g_st=aw" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        <i class="fa-solid fa-location-arrow"></i> Get Directions
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- B2B CTA Section -->
     <section class="cta-section" style="background: linear-gradient(135deg, var(--primary-blue), #1e293b); color: white; text-align: center; padding: 5rem 0;">
         <div class="container fade-in">
             <h2 style="color: white; margin-bottom: 1rem;">Looking for pharmaceutical products?</h2>
-            <p style="color: rgba(255,255,255,0.8); font-size: 1.125rem; margin-bottom: 2rem;">Send us your requirement and we will assist you with professional service.</p>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.125rem; margin-bottom: 2rem;">Send your product requirement and our team can assist with your enquiry.</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="#enquiryFormCard" class="btn btn-primary" style="background: var(--secondary-green); border: none;">Enquire Now</a>
-                <a href="#products" class="btn btn-secondary" style="color: white; border-color: white;">Request Product Information</a>
+                <a href="#products" class="btn btn-primary" style="background: white; color: var(--primary-blue); border: none;">Explore Products</a>
+                <a href="#enquiryFormCard" class="btn btn-primary" style="background: var(--secondary-green); border: none;">Send Enquiry</a>
+                <a href="https://wa.me/917050211778" target="_blank" class="btn btn-primary" style="background: #25D366; border: none;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </section>
