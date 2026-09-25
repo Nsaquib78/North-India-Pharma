@@ -36,104 +36,97 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Intersection Observer for scroll animations
-    const fadeElements = document.querySelectorAll('.fade-in');
+    // --- STAGE 5: Advanced Product & B2B Enquiry Platform ---
     
-    const appearOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('appear');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, appearOptions);
-
-    fadeElements.forEach(element => {
-        appearOnScroll.observe(element);
-    });
-
-    // --- STAGE 1: Products Catalog Logic ---
-    
-    // 1. Centralized Product Data
+    // 1. Advanced Product Data Architecture
     const productsData = [
         {
-            id: 1,
-            name: "Generic Paracetamol Tablets 500mg",
+            id: "product-001",
+            sku: "NIP-001",
+            name: "Generic Tablet Product A",
             category: "Tablets",
-            type: "Analgesic & Antipyretic",
-            description: "Standard formulation for fever and mild to moderate pain relief. Manufactured under strict quality guidelines to ensure efficacy.",
+            type: "Tablets",
+            description: "Generic pharmaceutical tablet formulated according to standard manufacturing guidelines.",
             image: "assets/placeholder.svg",
-            availability: "In Stock"
+            availability: "Enquiry",
+            tags: ["tablets", "pharma", "generic"]
         },
         {
-            id: 2,
-            name: "Multivitamin & Mineral Capsules",
+            id: "product-002",
+            sku: "NIP-002",
+            name: "Generic Multivitamin Capsule",
             category: "Capsules",
-            type: "Dietary Supplement",
-            description: "Comprehensive multivitamin and mineral supplement to support overall daily nutritional requirements and maintain general well-being.",
+            type: "Capsules",
+            description: "Generic multivitamin capsule for daily nutritional supplementation.",
             image: "assets/placeholder.svg",
-            availability: "In Stock"
+            availability: "Enquiry",
+            tags: ["capsules", "vitamins", "supplement"]
         },
         {
-            id: 3,
-            name: "Cough Syrup - Expectorant Formula",
+            id: "product-003",
+            sku: "NIP-003",
+            name: "Generic Cough Syrup Formula",
             category: "Syrups",
-            type: "Respiratory Care",
-            description: "Effective expectorant formula designed to relieve chest congestion, soothe throat irritation, and help clear respiratory passages.",
+            type: "Syrups",
+            description: "Standard generic expectorant syrup for respiratory care.",
             image: "assets/placeholder.svg",
-            availability: "Available on Order"
+            availability: "Enquiry",
+            tags: ["syrup", "respiratory", "liquid"]
         },
         {
-            id: 4,
-            name: "Antacid Oral Suspension",
+            id: "product-004",
+            sku: "NIP-004",
+            name: "Generic Antacid Suspension",
             category: "Oral Solutions",
-            type: "Gastrointestinal",
-            description: "Fast-acting oral suspension for the relief of acidity, heartburn, and stomach upset. Provides quick and lasting comfort.",
+            type: "Oral Solutions",
+            description: "Generic oral suspension for gastrointestinal comfort.",
             image: "assets/placeholder.svg",
-            availability: "In Stock"
+            availability: "Enquiry",
+            tags: ["antacid", "solution", "gastro"]
         },
         {
-            id: 5,
-            name: "Antibacterial Skin Ointment",
+            id: "product-005",
+            sku: "NIP-005",
+            name: "Generic Antibacterial Ointment",
             category: "Ointments",
-            type: "Topical Application",
-            description: "Topical formulation intended for preventing and treating minor skin infections, cuts, and abrasions.",
+            type: "Ointments",
+            description: "Standard generic topical ointment for minor skin abrasions.",
             image: "assets/placeholder.svg",
-            availability: "In Stock"
+            availability: "Enquiry",
+            tags: ["ointment", "topical", "skin"]
         },
         {
-            id: 6,
-            name: "Calcium Supplements with Vitamin D3",
+            id: "product-006",
+            sku: "NIP-006",
+            name: "Generic Calcium Supplement",
             category: "Tablets",
-            type: "Bone Health",
-            description: "Formulated to support bone density and strength. Essential for maintaining healthy skeletal structure.",
+            type: "Tablets",
+            description: "Generic calcium tablet formulated for bone health support.",
             image: "assets/placeholder.svg",
-            availability: "In Stock"
+            availability: "Enquiry",
+            tags: ["calcium", "tablets", "bone"]
         },
         {
-            id: 7,
-            name: "Omeprazole Capsules 20mg",
+            id: "product-007",
+            sku: "NIP-007",
+            name: "Generic Omeprazole Capsule",
             category: "Capsules",
-            type: "Gastrointestinal",
-            description: "Standard formulation used for the management of gastroesophageal reflux disease and excess stomach acid.",
+            type: "Capsules",
+            description: "Standard generic formulation for gastroesophageal care.",
             image: "assets/placeholder.svg",
-            availability: "In Stock"
+            availability: "Enquiry",
+            tags: ["capsules", "omeprazole", "gastro"]
         },
         {
-            id: 8,
-            name: "Rehydration Oral Salts (ORS)",
+            id: "product-008",
+            sku: "NIP-008",
+            name: "Generic Rehydration Salts",
             category: "Pharmaceutical Products",
-            type: "Electrolyte Replenishment",
-            description: "Standard ORS formulation used to restore fluid and electrolyte balance in the body.",
+            type: "Pharmaceutical Products",
+            description: "Standard generic oral rehydration salts for fluid balance.",
             image: "assets/placeholder.svg",
-            availability: "In Stock"
+            availability: "Enquiry",
+            tags: ["ors", "salts", "hydration"]
         }
     ];
 
@@ -143,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearSearchBtn = document.getElementById('clearSearch');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+    const productSort = document.getElementById('productSort');
     
     // Modal Elements
     const productModal = document.getElementById('productModal');
@@ -150,13 +144,161 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImage = document.getElementById('modalImage');
     const modalCategory = document.getElementById('modalCategory');
     const modalType = document.getElementById('modalType');
+    const modalSku = document.getElementById('modalSku');
+    const modalCategoryCrumb = document.getElementById('modalCategoryCrumb');
     const modalTitle = document.getElementById('modalTitle');
     const modalAvailability = document.getElementById('modalAvailability');
     const modalDescription = document.getElementById('modalDescription');
     const modalEnquireBtn = document.getElementById('modalEnquireBtn');
+    const modalShareBtn = document.getElementById('modalShareBtn');
+    const shareMessage = document.getElementById('shareMessage');
+    
+    // Enquiry List Elements
+    const enquiryListToggle = document.getElementById('enquiryListToggle');
+    const enquiryCountBadge = document.getElementById('enquiryCountBadge');
+    const enquiryDrawer = document.getElementById('enquiryDrawer');
+    const enquiryDrawerOverlay = document.getElementById('enquiryDrawerOverlay');
+    const closeEnquiryDrawerBtn = document.getElementById('closeEnquiryDrawer');
+    const enquiryDrawerItems = document.getElementById('enquiryDrawerItems');
+    const clearEnquiryListBtn = document.getElementById('clearEnquiryListBtn');
+    const continueEnquiryBtn = document.getElementById('continueEnquiryBtn');
+    const b2bForm = document.getElementById('b2bEnquiryForm');
     
     let currentCategory = 'All';
     let currentSearchTerm = '';
+    let currentSort = 'default';
+
+    // 14. Persistence
+    let enquiryList = [];
+    try {
+        const stored = localStorage.getItem('nipEnquiryList');
+        if (stored) enquiryList = JSON.parse(stored);
+    } catch (e) {
+        console.error("Could not parse localStorage enquiry list.", e);
+    }
+    
+    // Save to localStorage
+    function saveEnquiryList() {
+        localStorage.setItem('nipEnquiryList', JSON.stringify(enquiryList));
+        updateEnquiryUI();
+    }
+
+    // Update Enquiry UI (Count & Drawer)
+    function updateEnquiryUI() {
+        if (enquiryCountBadge) enquiryCountBadge.textContent = enquiryList.length;
+        
+        if (enquiryDrawerItems) {
+            if (enquiryList.length === 0) {
+                enquiryDrawerItems.innerHTML = `
+                    <div style="text-align: center; color: var(--text-light); padding: 2rem 0;">
+                        <i class="fa-solid fa-box-open" style="font-size: 3rem; opacity: 0.2; margin-bottom: 1rem;"></i>
+                        <p>Your enquiry list is empty.</p>
+                    </div>`;
+            } else {
+                enquiryDrawerItems.innerHTML = '';
+                enquiryList.forEach(id => {
+                    const product = productsData.find(p => p.id === id);
+                    if (product) {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.style.cssText = "display: flex; justify-content: space-between; align-items: center; padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; background: white;";
+                        itemDiv.innerHTML = `
+                            <div>
+                                <h4 style="font-size: 0.95rem; margin-bottom: 0.25rem;">${product.name}</h4>
+                                <span style="font-size: 0.8rem; color: var(--text-light);">${product.category} | ${product.sku}</span>
+                            </div>
+                            <button class="remove-enquiry-btn" data-id="${product.id}" style="background: none; border: none; color: #dc2626; cursor: pointer; padding: 0.5rem;" aria-label="Remove Product"><i class="fa-solid fa-trash-can"></i></button>
+                        `;
+                        enquiryDrawerItems.appendChild(itemDiv);
+                    }
+                });
+                
+                // Add listener to remove buttons
+                document.querySelectorAll('.remove-enquiry-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const btnEl = e.target.closest('button');
+                        if (btnEl) {
+                            const productId = btnEl.getAttribute('data-id');
+                            enquiryList = enquiryList.filter(id => id !== productId);
+                            saveEnquiryList();
+                            renderProducts(); // Update card button states
+                            
+                            // If modal is open for this product, update its button too
+                            if (productModal.classList.contains('active')) {
+                                const activeModalProduct = productsData.find(p => p.id === productId);
+                                if (activeModalProduct && modalTitle.textContent === activeModalProduct.name) {
+                                    updateModalEnquiryButton(productId);
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+        }
+    }
+
+    // Toggle product in enquiry
+    function toggleEnquiry(productId) {
+        if (enquiryList.includes(productId)) {
+            enquiryList = enquiryList.filter(id => id !== productId);
+        } else {
+            enquiryList.push(productId);
+            // Visual confirmation can be simple UI state change
+        }
+        saveEnquiryList();
+        renderProducts();
+    }
+    
+    // Initial UI Setup
+    updateEnquiryUI();
+
+    // Drawer event listeners
+    if (enquiryListToggle) {
+        enquiryListToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            enquiryDrawer.style.right = '0';
+            enquiryDrawerOverlay.style.display = 'block';
+            setTimeout(() => enquiryDrawerOverlay.style.opacity = '1', 10);
+        });
+    }
+    
+    function closeDrawer() {
+        enquiryDrawer.style.right = '-400px';
+        enquiryDrawerOverlay.style.opacity = '0';
+        setTimeout(() => enquiryDrawerOverlay.style.display = 'none', 300);
+    }
+    
+    if (closeEnquiryDrawerBtn) closeEnquiryDrawerBtn.addEventListener('click', closeDrawer);
+    if (enquiryDrawerOverlay) enquiryDrawerOverlay.addEventListener('click', closeDrawer);
+    
+    if (clearEnquiryListBtn) {
+        clearEnquiryListBtn.addEventListener('click', () => {
+            if (confirm("Clear all items from your enquiry list?")) {
+                enquiryList = [];
+                saveEnquiryList();
+                renderProducts();
+            }
+        });
+    }
+
+    if (continueEnquiryBtn) {
+        continueEnquiryBtn.addEventListener('click', () => {
+            closeDrawer();
+            
+            // Populate form
+            const enqProductInput = document.getElementById('enqProduct');
+            if (enqProductInput && enquiryList.length > 0) {
+                const names = enquiryList.map(id => {
+                    const p = productsData.find(prod => prod.id === id);
+                    return p ? p.name : '';
+                }).filter(n => n).join(', ');
+                enqProductInput.value = names;
+            }
+            
+            if (b2bForm) {
+                b2bForm.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 
     // Render Products Function
     function renderProducts() {
@@ -164,14 +306,27 @@ document.addEventListener('DOMContentLoaded', () => {
         
         productsGrid.innerHTML = '';
         
-        const filteredProducts = productsData.filter(product => {
+        let filteredProducts = productsData.filter(product => {
             const matchesCategory = currentCategory === 'All' || product.category === currentCategory;
             const searchTermLower = currentSearchTerm.toLowerCase();
+            const tagsMatch = product.tags.some(tag => tag.toLowerCase().includes(searchTermLower));
+            
             const matchesSearch = product.name.toLowerCase().includes(searchTermLower) ||
                                   product.category.toLowerCase().includes(searchTermLower) ||
-                                  product.type.toLowerCase().includes(searchTermLower);
+                                  product.type.toLowerCase().includes(searchTermLower) ||
+                                  product.sku.toLowerCase().includes(searchTermLower) ||
+                                  tagsMatch;
             return matchesCategory && matchesSearch;
         });
+        
+        // Sorting
+        if (currentSort === 'name-asc') {
+            filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (currentSort === 'name-desc') {
+            filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+        } else if (currentSort === 'category-asc') {
+            filteredProducts.sort((a, b) => a.category.localeCompare(b.category));
+        }
 
         if (filteredProducts.length === 0) {
             productsGrid.style.display = 'none';
@@ -181,6 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (noProductsFound) noProductsFound.style.display = 'none';
             
             filteredProducts.forEach(product => {
+                const isAdded = enquiryList.includes(product.id);
                 const card = document.createElement('div');
                 card.className = 'catalog-card fade-in appear';
                 
@@ -191,12 +347,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="card-content">
                         <div class="card-tags">
                             <span class="tag tag-category">${product.category}</span>
-                            <span class="tag tag-type">${product.type}</span>
                         </div>
-                        <h3>${product.name}</h3>
+                        <h3 style="margin-bottom: 0.25rem;">${product.name}</h3>
+                        <p style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.75rem;">Ref: ${product.sku}</p>
                         <p class="card-desc">${product.description}</p>
-                        <div class="card-actions">
-                            <button class="btn btn-secondary view-details-btn" data-id="${product.id}">View Details</button>
+                        <div class="card-actions" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <button class="btn btn-secondary view-details-btn" data-id="${product.id}" style="flex: 1; padding: 0.5rem; font-size: 0.85rem;">Details</button>
+                            <button class="btn add-enquiry-btn ${isAdded ? 'btn-secondary' : 'btn-primary'}" data-id="${product.id}" style="flex: 1; padding: 0.5rem; font-size: 0.85rem; ${isAdded ? 'background: var(--bg-secondary); color: var(--primary-blue); border-color: var(--primary-blue);' : ''}">
+                                ${isAdded ? '<i class="fa-solid fa-check"></i> Added' : '<i class="fa-solid fa-plus"></i> Add'}
+                            </button>
                         </div>
                     </div>
                 `;
@@ -206,8 +365,18 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add event listeners to new buttons
             document.querySelectorAll('.view-details-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.getAttribute('data-id'));
+                    const productId = e.target.getAttribute('data-id');
                     openModal(productId);
+                });
+            });
+            
+            document.querySelectorAll('.add-enquiry-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const btnEl = e.target.closest('button');
+                    if (btnEl) {
+                        const productId = btnEl.getAttribute('data-id');
+                        toggleEnquiry(productId);
+                    }
                 });
             });
         }
@@ -229,6 +398,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Sort Logic
+    if (productSort) {
+        productSort.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderProducts();
+        });
+    }
+
     // Filter Logic
     if (filterBtns) {
         filterBtns.forEach(btn => {
@@ -246,6 +423,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (searchInput) searchInput.value = '';
             currentSearchTerm = '';
             if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+            if (productSort) productSort.value = 'default';
+            currentSort = 'default';
             
             filterBtns.forEach(b => b.classList.remove('active'));
             const allBtn = document.querySelector('.filter-btn[data-category="All"]');
@@ -256,12 +435,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function updateModalEnquiryButton(productId) {
+        if (!modalEnquireBtn) return;
+        const isAdded = enquiryList.includes(productId);
+        if (isAdded) {
+            modalEnquireBtn.innerHTML = '<i class="fa-solid fa-check"></i> Added to Enquiry';
+            modalEnquireBtn.classList.remove('btn-primary');
+            modalEnquireBtn.classList.add('btn-secondary');
+            modalEnquireBtn.style.background = 'var(--bg-secondary)';
+            modalEnquireBtn.style.color = 'var(--primary-blue)';
+            modalEnquireBtn.style.borderColor = 'var(--primary-blue)';
+        } else {
+            modalEnquireBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add to Enquiry';
+            modalEnquireBtn.classList.add('btn-primary');
+            modalEnquireBtn.classList.remove('btn-secondary');
+            modalEnquireBtn.style.background = '';
+            modalEnquireBtn.style.color = '';
+            modalEnquireBtn.style.borderColor = '';
+        }
+        
+        // Re-attach event listener without stacking
+        modalEnquireBtn.onclick = null;
+        modalEnquireBtn.onclick = () => {
+            toggleEnquiry(productId);
+            updateModalEnquiryButton(productId);
+        };
+    }
+
     // Modal Logic
     function openModal(productId) {
         if (!productModal) return;
         
         const product = productsData.find(p => p.id === productId);
-        if (!product) return;
+        if (!product) {
+            alert('Product not found.');
+            return;
+        }
+
+        // 11. Deep Linking
+        window.history.replaceState(null, null, `#product=${product.id}`);
 
         if (modalImage) {
             modalImage.src = product.image;
@@ -272,22 +484,37 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
         if (modalCategory) modalCategory.textContent = product.category;
+        if (modalCategoryCrumb) modalCategoryCrumb.textContent = product.category;
         if (modalType) modalType.textContent = product.type;
+        if (modalSku) modalSku.textContent = `Ref: ${product.sku}`;
         if (modalTitle) modalTitle.textContent = product.name;
         if (modalAvailability) modalAvailability.textContent = product.availability;
         if (modalDescription) modalDescription.textContent = product.description;
         
-        // Setup Modal Enquire Button to scroll to B2B Form
-        if (modalEnquireBtn) {
-            modalEnquireBtn.onclick = () => {
-                closeModal();
-                const enqProductInput = document.getElementById('enqProduct');
-                if (enqProductInput) {
-                    enqProductInput.value = `${product.name} (${product.category})`;
-                }
-                const enquiryForm = document.getElementById('enquiryFormCard');
-                if (enquiryForm) {
-                    enquiryForm.scrollIntoView({ behavior: 'smooth' });
+        updateModalEnquiryButton(productId);
+
+        // Share Feature
+        if (modalShareBtn) {
+            modalShareBtn.onclick = async () => {
+                const url = window.location.href;
+                const shareData = {
+                    title: `North India Pharma - ${product.name}`,
+                    text: `Check out ${product.name} at North India Pharma.`,
+                    url: url
+                };
+                
+                try {
+                    if (navigator.share) {
+                        await navigator.share(shareData);
+                    } else {
+                        await navigator.clipboard.writeText(url);
+                        if (shareMessage) {
+                            shareMessage.style.display = 'block';
+                            setTimeout(() => shareMessage.style.display = 'none', 3000);
+                        }
+                    }
+                } catch (err) {
+                    console.error("Share failed", err);
                 }
             };
         }
@@ -300,6 +527,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (productModal) {
             productModal.classList.remove('active');
             document.body.style.overflow = '';
+            // Clear URL without refreshing
+            if (window.location.hash.startsWith('#product=')) {
+                window.history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
         }
     }
 
@@ -319,8 +550,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Deep Link Handling on Load
+    function handleDeepLink() {
+        if (window.location.hash.startsWith('#product=')) {
+            const productId = window.location.hash.split('=')[1];
+            if (productId) {
+                // small delay to ensure rendering
+                setTimeout(() => openModal(productId), 300);
+            }
+        }
+    }
+    
     // Initial Render
     renderProducts();
+    handleDeepLink();
 
     // --- STAGE 2: B2B Enquiry & FAQ Logic ---
 
@@ -349,7 +592,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // B2B Form Submission via WhatsApp
-    const b2bForm = document.getElementById('b2bEnquiryForm');
     if (b2bForm) {
         b2bForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -362,20 +604,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const quantity = document.getElementById('enqQuantity').value.trim();
             const message = document.getElementById('enqMessage').value.trim();
 
-            let waText = `Hello North India Pharma,\n\nI would like to enquire about the following.\n\n`;
-            if (product) waText += `Product: ${product}\n`;
+            let waText = `Hello North India Pharma,\n\nI would like to enquire about the following products:\n\n`;
+            
+            if (enquiryList.length > 0) {
+                enquiryList.forEach((id, index) => {
+                    const p = productsData.find(prod => prod.id === id);
+                    if (p) {
+                        waText += `${index + 1}. ${p.name}\n`;
+                        waText += `   Category: ${p.category}\n`;
+                        waText += `   Reference: ${p.sku}\n\n`;
+                    }
+                });
+            } else if (product) {
+                waText += `1. ${product}\n\n`;
+            } else {
+                waText = `Hello North India Pharma,\n\nI would like to make a business enquiry.\n\n`;
+            }
+
+            waText += `Customer Details:\n`;
             waText += `Name: ${name}\n`;
             if (company) waText += `Company: ${company}\n`;
             waText += `Phone: ${phone}\n`;
-            if (email) waText += `Email: ${email}\n`;
-            if (quantity) waText += `Required Quantity: ${quantity}\n`;
-            waText += `\nRequirement:\n${message}\n\nPlease provide further information.`;
+            if (email) waText += `Email: ${email}\n\n`;
+            
+            if (quantity) waText += `Quantity / Requirement: ${quantity}\n\n`;
+            waText += `Requirement:\n${message}\n\nPlease provide further information.`;
 
             const whatsappNumber = "917050211778";
             const encodedText = encodeURIComponent(waText);
             
             window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, '_blank');
-        });
         });
     }
 
