@@ -168,13 +168,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSearchTerm = '';
     let currentSort = 'default';
 
-    // 14. Persistence
     let enquiryList = [];
     try {
         const stored = localStorage.getItem('nipEnquiryList');
-        if (stored) enquiryList = JSON.parse(stored);
+        if (stored) {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed)) {
+                enquiryList = parsed.filter(id => typeof id === 'string' && productsData.some(p => p.id === id));
+            }
+        }
     } catch (e) {
-        console.error("Could not parse localStorage enquiry list.", e);
+        console.warn("Could not parse localStorage enquiry list.", e);
     }
     
     // Save to localStorage

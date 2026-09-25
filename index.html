@@ -3,15 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North India Pharma | Professional B2B Pharmaceutical Services</title>
-    <meta name="description" content="North India Pharma, led by Md Abu Amir, is based in Rani Bagh, Simri Bakhtiyarpur, Near Bajaj show room, Saharsa, Bihar - 852127. Contact us for pharmaceutical products and professional service.">
+    <title>North India Pharma | Pharmaceutical Products & B2B Enquiries</title>
+    <meta name="description" content="North India Pharma provides a professional platform for pharmaceutical product information and B2B enquiries in Simri Bakhtiyarpur, Saharsa, Bihar.">
     <meta name="keywords" content="Pharmaceutical products, B2B pharmaceutical, North India Pharma, healthcare products, wholesale pharmacy, Saharsa Bihar pharma, Md Abu Amir">
-    <meta property="og:title" content="North India Pharma | Professional B2B Pharmaceutical Services">
-    <meta property="og:description" content="North India Pharma provides pharmaceutical products and professional customer service for customers and healthcare-related businesses in Saharsa, Bihar.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1e40af">
+    <link rel="canonical" href="https://northindiapharma.com/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="North India Pharma | Pharmaceutical Products & B2B Enquiries">
+    <meta property="og:description" content="North India Pharma provides a professional platform for pharmaceutical product information and B2B enquiries in Simri Bakhtiyarpur, Saharsa, Bihar.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://northindiapharma.com/">
     <meta property="og:image" content="assets/hero-products.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "North India Pharma",
+      "founder": "Md Abu Amir",
+      "url": "https://northindiapharma.com/",
+      "logo": "https://northindiapharma.com/assets/favicon.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-7050211778",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": "en"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rani Bagh, Simri Bakhtiyarpur, Near Bajaj show room",
+        "addressLocality": "Saharsa",
+        "addressRegion": "Bihar",
+        "postalCode": "852127",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -19,22 +53,22 @@
     <!-- Header / Navbar -->
     <header class="navbar" id="navbar">
         <div class="container">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-capsules logo-icon"></i>
+            <a href="#home" class="logo" aria-label="North India Pharma Home">
+                <i class="fa-solid fa-capsules logo-icon" aria-hidden="true"></i>
                 North India Pharma
             </a>
-            <button class="hamburger" id="hamburger">
-                <i class="fa-solid fa-bars"></i>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
             <nav>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#quality">Quality & Service</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li>
-                        <button id="enquiryListToggle" class="btn btn-primary" style="display: flex; gap: 0.5rem; align-items: center;">
+                <ul class="nav-links" id="nav-links" role="menubar">
+                    <li role="none"><a role="menuitem" href="#home">Home</a></li>
+                    <li role="none"><a role="menuitem" href="#about">About Us</a></li>
+                    <li role="none"><a role="menuitem" href="#products">Products</a></li>
+                    <li role="none"><a role="menuitem" href="#capabilities">Capabilities</a></li>
+                    <li role="none"><a role="menuitem" href="#contact">Contact Us</a></li>
+                    <li role="none">
+                        <button id="enquiryListToggle" class="btn btn-primary" style="display: flex; gap: 0.5rem; align-items: center;" aria-label="View Enquiry List" aria-expanded="false" aria-controls="enquiryDrawer">
                             <i class="fa-solid fa-list-check"></i>
                             Enquiry List <span id="enquiryCountBadge" style="background: white; color: var(--primary-blue); padding: 0.1rem 0.5rem; border-radius: 50px; font-size: 0.8rem; font-weight: bold;">0</span>
                         </button>
@@ -500,35 +534,35 @@
                     <form id="b2bEnquiryForm">
                         <div class="form-group">
                             <label for="enqName" style="display:block; text-align:left; margin-bottom:0.5rem; font-size:0.9rem; font-weight:600;">Full Name <span style="color:red;">*</span></label>
-                            <input type="text" id="enqName" name="enqName" class="form-control" placeholder="Enter your full name" required>
+                            <input type="text" id="enqName" name="enqName" class="form-control" placeholder="Enter your full name" required maxlength="100">
                         </div>
                         <div class="form-group">
                             <label for="enqCompany" style="display:block; text-align:left; margin-bottom:0.5rem; font-size:0.9rem; font-weight:600;">Company / Organization Name</label>
-                            <input type="text" id="enqCompany" name="enqCompany" class="form-control" placeholder="Enter your company name">
+                            <input type="text" id="enqCompany" name="enqCompany" class="form-control" placeholder="Enter your company name" maxlength="150">
                         </div>
                         <div class="form-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem;">
                             <div class="form-group">
                                 <label for="enqPhone" style="display:block; text-align:left; margin-bottom:0.5rem; font-size:0.9rem; font-weight:600;">Phone Number <span style="color:red;">*</span></label>
-                                <input type="tel" id="enqPhone" name="enqPhone" class="form-control" placeholder="Enter phone number" required pattern="[0-9\+\-\s]{10,15}" title="Please enter a valid phone number">
+                                <input type="tel" id="enqPhone" name="enqPhone" class="form-control" placeholder="Enter phone number" required pattern="[0-9\+\-\s]{10,15}" title="Please enter a valid phone number" maxlength="15">
                             </div>
                             <div class="form-group">
                                 <label for="enqEmail" style="display:block; text-align:left; margin-bottom:0.5rem; font-size:0.9rem; font-weight:600;">Email Address</label>
-                                <input type="email" id="enqEmail" name="enqEmail" class="form-control" placeholder="Enter email address">
+                                <input type="email" id="enqEmail" name="enqEmail" class="form-control" placeholder="Enter email address" maxlength="100">
                             </div>
                         </div>
                         <div class="form-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem;">
                             <div class="form-group">
                                 <label for="enqProduct" style="display:block; text-align:left; margin-bottom:0.5rem; font-size:0.9rem; font-weight:600;">Product / Category</label>
-                                <input type="text" id="enqProduct" name="enqProduct" class="form-control" placeholder="e.g. Generic Paracetamol">
+                                <input type="text" id="enqProduct" name="enqProduct" class="form-control" placeholder="e.g. Generic Paracetamol" maxlength="200">
                             </div>
                             <div class="form-group">
                                 <label for="enqQuantity" style="display:block; text-align:left; margin-bottom:0.5rem; font-size:0.9rem; font-weight:600;">Required Quantity</label>
-                                <input type="text" id="enqQuantity" name="enqQuantity" class="form-control" placeholder="e.g. 100 boxes">
+                                <input type="text" id="enqQuantity" name="enqQuantity" class="form-control" placeholder="e.g. 100 boxes" maxlength="100">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="enqMessage" style="display:block; text-align:left; margin-bottom:0.5rem; font-size:0.9rem; font-weight:600;">Requirement / Message <span style="color:red;">*</span></label>
-                            <textarea id="enqMessage" name="enqMessage" class="form-control" placeholder="Please describe your requirements..." required></textarea>
+                            <textarea id="enqMessage" name="enqMessage" class="form-control" placeholder="Please describe your requirements..." required maxlength="1000"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 0.5rem; background: #25D366; border-color: #25D366; margin-top: 1rem;">
                             <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i> Send Enquiry via WhatsApp
@@ -546,8 +580,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about">
-                    <a href="#" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
-                        <i class="fa-solid fa-capsules" style="color: var(--secondary-green);"></i>
+                    <a href="#home" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;" aria-label="North India Pharma Home">
+                        <i class="fa-solid fa-capsules" style="color: var(--secondary-green);" aria-hidden="true"></i>
                         North India Pharma
                     </a>
                     <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Professional pharmaceutical product enquiries and customer communication based in Saharsa, Bihar.</p>
@@ -575,8 +609,8 @@
                 
                 <div class="footer-contact">
                     <h4 class="footer-heading">Contact</h4>
-                    <p style="color: rgba(255,255,255,0.7);"><i class="fa-solid fa-phone" style="margin-right: 0.5rem;"></i> 7050211778</p>
-                    <p style="color: rgba(255,255,255,0.7);"><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"></i> Rani Bagh, Simri Bakhtiyarpur, Near Bajaj show room, Saharsa, Bihar - 852127</p>
+                    <p style="color: rgba(255,255,255,0.7);"><i class="fa-solid fa-phone" style="margin-right: 0.5rem;" aria-hidden="true"></i> 7050211778</p>
+                    <p style="color: rgba(255,255,255,0.7);"><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;" aria-hidden="true"></i> Rani Bagh, Simri Bakhtiyarpur, Near Bajaj show room, Saharsa, Bihar - 852127</p>
                 </div>
             </div>
             
@@ -587,16 +621,16 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/917050211778" target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
+    <a href="https://wa.me/917050211778" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <!-- Enquiry List Drawer -->
     <div id="enquiryDrawerOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2999; display: none; opacity: 0; transition: opacity 0.3s ease;"></div>
-    <div id="enquiryDrawer" style="position: fixed; top: 0; right: -400px; width: 100%; max-width: 400px; height: 100%; background: white; z-index: 3000; box-shadow: -5px 0 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; transition: right 0.3s ease;">
+    <div id="enquiryDrawer" style="position: fixed; top: 0; right: -400px; width: 100%; max-width: 400px; height: 100%; background: white; z-index: 3000; box-shadow: -5px 0 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; transition: right 0.3s ease;" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
         <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; background: var(--bg-secondary);">
-            <h3 style="margin: 0; color: var(--primary-blue); font-size: 1.25rem;"><i class="fa-solid fa-list-check" style="margin-right: 0.5rem; color: var(--secondary-green);"></i> Enquiry List</h3>
-            <button id="closeEnquiryDrawer" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light);"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="drawerTitle" style="margin: 0; color: var(--primary-blue); font-size: 1.25rem;"><i class="fa-solid fa-list-check" style="margin-right: 0.5rem; color: var(--secondary-green);" aria-hidden="true"></i> Enquiry List</h3>
+            <button id="closeEnquiryDrawer" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light);" aria-label="Close Enquiry Drawer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         </div>
         <div id="enquiryDrawerItems" style="flex-grow: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
             <!-- Items dynamically injected here -->
