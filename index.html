@@ -148,38 +148,43 @@
     <section id="products">
         <div class="container fade-in">
             <h2>Our Products</h2>
-            <p class="section-subtitle">Explore our pharmaceutical and healthcare product range.</p>
+            <p class="section-subtitle">Explore our premium pharmaceutical and healthcare product range.</p>
             
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fa-solid fa-capsules"></i>
-                    </div>
-                    <h3>Pharmaceutical Products</h3>
-                    <p>Reliable pharmaceutical items focused on standard formulations.</p>
-                    <a href="#contact" class="btn-link">Enquire Now <i class="fa-solid fa-arrow-right"></i></a>
+            <!-- Search & Filters -->
+            <div class="products-controls">
+                <div class="search-bar-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="productSearch" placeholder="Search by product name, category, or type..." aria-label="Search Products">
+                    <button id="clearSearch" class="clear-search-btn" aria-label="Clear Search"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                    </div>
-                    <h3>Healthcare Products</h3>
-                    <p>General healthcare products for daily well-being and health needs.</p>
-                    <a href="#contact" class="btn-link">Enquire Now <i class="fa-solid fa-arrow-right"></i></a>
+                
+                <div class="category-filters" id="categoryFilters">
+                    <button class="filter-btn active" data-category="All">All Products</button>
+                    <button class="filter-btn" data-category="Tablets">Tablets</button>
+                    <button class="filter-btn" data-category="Capsules">Capsules</button>
+                    <button class="filter-btn" data-category="Syrups">Syrups</button>
+                    <button class="filter-btn" data-category="Oral Solutions">Oral Solutions</button>
+                    <button class="filter-btn" data-category="Ointments">Ointments</button>
+                    <button class="filter-btn" data-category="Pharmaceutical Products">Pharmaceutical Products</button>
                 </div>
-                <div class="product-card">
-                    <div class="product-icon">
-                        <i class="fa-solid fa-folder-open"></i>
-                    </div>
-                    <h3>Product Information</h3>
-                    <p>Detailed product catalogs and pricing available upon request.</p>
-                    <a href="#contact" class="btn-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
+            </div>
+
+            <!-- Dynamic Products Grid -->
+            <div class="products-catalog-grid" id="productsGrid">
+                <!-- Products will be injected here via JavaScript -->
+            </div>
+            
+            <!-- No Results State -->
+            <div class="no-products-found" id="noProductsFound" style="display: none;">
+                <i class="fa-solid fa-box-open"></i>
+                <h3>No products found</h3>
+                <p>We couldn't find any products matching your search criteria.</p>
+                <button class="btn btn-secondary" id="resetFiltersBtn">Reset Filters</button>
             </div>
             
             <div style="text-align: center; margin-top: 3rem;">
                 <p style="margin-bottom: 1.5rem; font-style: italic; color: var(--text-light);">Detailed product information is available on request.</p>
-                <a href="#contact" class="btn btn-primary">Enquire About Products</a>
+                <a href="#contact" class="btn btn-primary">Contact For Full Catalog</a>
             </div>
         </div>
     </section>
@@ -383,6 +388,44 @@
     <a href="https://wa.me/917050211778" target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- Product Details Modal -->
+    <div class="product-modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="product-modal-content">
+            <button class="modal-close-btn" id="closeModalBtn" aria-label="Close Modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="modal-grid">
+                <div class="modal-image-container">
+                    <img src="" alt="Product Image" id="modalImage">
+                </div>
+                <div class="modal-details">
+                    <div class="modal-category-tags">
+                        <span class="modal-tag" id="modalCategory">Category</span>
+                        <span class="modal-tag type-tag" id="modalType">Type</span>
+                    </div>
+                    <h3 id="modalTitle">Product Name</h3>
+                    
+                    <div class="modal-availability">
+                        <i class="fa-solid fa-circle-check"></i> <span id="modalAvailability">In Stock</span>
+                    </div>
+                    
+                    <div class="modal-description">
+                        <h4>Description</h4>
+                        <p id="modalDescription">Product description goes here.</p>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn btn-primary btn-lg" id="modalEnquireBtn" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 0.5rem;">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i> Enquire Now
+                        </button>
+                    </div>
+                    <p class="modal-disclaimer" style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-light); text-align: center;">* This is a generic product listing. No medical claims are made.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
