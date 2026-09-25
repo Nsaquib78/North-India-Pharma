@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Tablets",
             type: "Analgesic & Antipyretic",
             description: "Standard formulation for fever and mild to moderate pain relief. Manufactured under strict quality guidelines to ensure efficacy.",
-            image: "https://placehold.co/600x400/f8fafc/0A3D6B?text=Tablets",
+            image: "assets/placeholder.svg",
             availability: "In Stock"
         },
         {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Capsules",
             type: "Dietary Supplement",
             description: "Comprehensive multivitamin and mineral supplement to support overall daily nutritional requirements and maintain general well-being.",
-            image: "https://placehold.co/600x400/f8fafc/218c80?text=Capsules",
+            image: "assets/placeholder.svg",
             availability: "In Stock"
         },
         {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Syrups",
             type: "Respiratory Care",
             description: "Effective expectorant formula designed to relieve chest congestion, soothe throat irritation, and help clear respiratory passages.",
-            image: "https://placehold.co/600x400/f8fafc/0A3D6B?text=Syrup",
+            image: "assets/placeholder.svg",
             availability: "Available on Order"
         },
         {
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Oral Solutions",
             type: "Gastrointestinal",
             description: "Fast-acting oral suspension for the relief of acidity, heartburn, and stomach upset. Provides quick and lasting comfort.",
-            image: "https://placehold.co/600x400/f8fafc/218c80?text=Oral+Solution",
+            image: "assets/placeholder.svg",
             availability: "In Stock"
         },
         {
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Ointments",
             type: "Topical Application",
             description: "Topical formulation intended for preventing and treating minor skin infections, cuts, and abrasions.",
-            image: "https://placehold.co/600x400/f8fafc/0A3D6B?text=Ointment",
+            image: "assets/placeholder.svg",
             availability: "In Stock"
         },
         {
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Tablets",
             type: "Bone Health",
             description: "Formulated to support bone density and strength. Essential for maintaining healthy skeletal structure.",
-            image: "https://placehold.co/600x400/f8fafc/218c80?text=Tablets",
+            image: "assets/placeholder.svg",
             availability: "In Stock"
         },
         {
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Capsules",
             type: "Gastrointestinal",
             description: "Standard formulation used for the management of gastroesophageal reflux disease and excess stomach acid.",
-            image: "https://placehold.co/600x400/f8fafc/0A3D6B?text=Capsules",
+            image: "assets/placeholder.svg",
             availability: "In Stock"
         },
         {
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Pharmaceutical Products",
             type: "Electrolyte Replenishment",
             description: "Standard ORS formulation used to restore fluid and electrolyte balance in the body.",
-            image: "https://placehold.co/600x400/f8fafc/218c80?text=Pharma",
+            image: "assets/placeholder.svg",
             availability: "In Stock"
         }
     ];
@@ -185,7 +185,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.className = 'catalog-card fade-in appear';
                 
                 card.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}" class="card-image" loading="lazy">
+                    <div class="card-image-wrapper" style="width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #f8fafc;">
+                        <img src="${product.image}" alt="${product.name}" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/placeholder.svg';" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                    </div>
                     <div class="card-content">
                         <div class="card-tags">
                             <span class="tag tag-category">${product.category}</span>
@@ -264,6 +266,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalImage) {
             modalImage.src = product.image;
             modalImage.alt = product.name;
+            modalImage.onerror = function() {
+                this.onerror = null;
+                this.src = 'assets/placeholder.svg';
+            };
         }
         if (modalCategory) modalCategory.textContent = product.category;
         if (modalType) modalType.textContent = product.type;
@@ -370,5 +376,34 @@ document.addEventListener('DOMContentLoaded', () => {
             
             window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, '_blank');
         });
+        });
+    }
+
+    // Scroll Animations using Intersection Observer
+    const fadeElements = document.querySelectorAll('.fade-in:not(.appear)');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+        fadeElements.forEach(el => el.classList.add('appear'));
+    } else if ('IntersectionObserver' in window) {
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        
+        fadeElements.forEach(el => {
+            appearOnScroll.observe(el);
+        });
+    } else {
+        fadeElements.forEach(el => el.classList.add('appear'));
     }
 });
