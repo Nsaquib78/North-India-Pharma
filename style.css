@@ -1278,3 +1278,10 @@ textarea.form-control {
     font-size: 1.5rem;
   }
 }
+
+/* Stage 6: Active Navigation Link */
+.nav-links a.active-nav {
+  color: var(--secondary-green);
+  font-weight: 600;
+}
+

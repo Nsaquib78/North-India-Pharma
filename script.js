@@ -661,7 +661,47 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeElements.forEach(el => {
             appearOnScroll.observe(el);
         });
-    } else {
         fadeElements.forEach(el => el.classList.add('appear'));
     }
+
+    // --- STAGE 6: Active Navigation State ---
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    const navObserverOptions = {
+        threshold: 0.2,
+        rootMargin: "-100px 0px -100px 0px"
+    };
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                let currentId = entry.target.getAttribute('id');
+                navItems.forEach(link => {
+                    link.classList.remove('active-nav');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active-nav');
+                    }
+                });
+            }
+        });
+    }, navObserverOptions);
+
+    sections.forEach(section => {
+        if (section.getAttribute('id')) {
+            navObserver.observe(section);
+        }
+    });
+
+    // Support keyboard escape for modal and drawer
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (productModal && productModal.classList.contains('active')) {
+                closeModal();
+            }
+            if (enquiryDrawer && enquiryDrawer.style.right === '0px') {
+                closeDrawer();
+            }
+        }
+    });
 });
