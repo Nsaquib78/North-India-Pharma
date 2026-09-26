@@ -1230,28 +1230,29 @@ section { padding: clamp(1.5rem, 6vw, 6rem) 0 !important; }
 }
 
 /* Nav - Keep Horizontal */
-.navbar .container { min-height: clamp(50px, 8vw, 80px) !important; height: auto !important; padding-top: 10px !important; padding-bottom: 10px !important; overflow: visible !important; }
-.logo { font-size: clamp(0.85rem, 4vw, 1.5rem) !important; gap: clamp(0.25rem, 1vw, 0.5rem) !important; white-space: nowrap !important; }
-.logo-icon { font-size: clamp(1rem, 4vw, 1.75rem) !important; }
+.navbar .container { min-height: clamp(50px, 8vw, 80px) !important; height: auto !important; padding-top: 10px !important; padding-bottom: 10px !important; overflow: visible !important; flex-wrap: nowrap !important; }
+.logo { font-size: clamp(0.75rem, 3.5vw, 1.1rem) !important; gap: clamp(0.2rem, 1vw, 0.4rem) !important; white-space: nowrap !important; flex-shrink: 0 !important; }
+.logo-icon { font-size: clamp(0.9rem, 3.5vw, 1.25rem) !important; }
 .nav-links {
   display: flex !important;
   position: static !important;
   width: auto !important;
+  max-width: 100% !important;
   background: transparent !important;
   flex-direction: row !important;
   padding: 0 !important;
   box-shadow: none !important;
-  gap: clamp(0.5rem, 1.5vw, 2rem) !important;
+  gap: clamp(6px, 1.5vw, 1.5rem) !important;
   overflow-x: auto !important;
   white-space: nowrap !important;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 .nav-links::-webkit-scrollbar { display: none; }
-.nav-links a { font-size: clamp(0.7rem, 1.5vw, 1rem) !important; min-height: 40px; display: inline-flex; align-items: center; }
+.nav-links a { font-size: clamp(0.65rem, 1.5vw, 0.95rem) !important; min-height: 40px; display: inline-flex; align-items: center; }
 .nav-links .btn { 
-  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.75rem, 2vw, 1.5rem) !important; 
-  font-size: clamp(0.7rem, 1.5vw, 0.95rem) !important; 
+  padding: clamp(0.35rem, 1vw, 0.6rem) clamp(0.5rem, 2vw, 1.25rem) !important; 
+  font-size: clamp(0.65rem, 1.5vw, 0.9rem) !important; 
 }
 .hamburger { display: none !important; }
 
