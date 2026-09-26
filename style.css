@@ -1230,9 +1230,9 @@ section { padding: clamp(1.5rem, 6vw, 6rem) 0 !important; }
 }
 
 /* Nav - Keep Horizontal */
-.navbar .container { height: clamp(50px, 8vw, 80px) !important; }
-.logo { font-size: clamp(1rem, 2.5vw, 1.5rem) !important; gap: clamp(0.25rem, 1vw, 0.5rem) !important; }
-.logo-icon { font-size: clamp(1.2rem, 3vw, 1.75rem) !important; }
+.navbar .container { min-height: clamp(50px, 8vw, 80px) !important; height: auto !important; padding-top: 10px !important; padding-bottom: 10px !important; overflow: visible !important; }
+.logo { font-size: clamp(0.85rem, 4vw, 1.5rem) !important; gap: clamp(0.25rem, 1vw, 0.5rem) !important; white-space: nowrap !important; }
+.logo-icon { font-size: clamp(1rem, 4vw, 1.75rem) !important; }
 .nav-links {
   display: flex !important;
   position: static !important;
