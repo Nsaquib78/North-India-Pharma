@@ -1339,7 +1339,7 @@ textarea.form-control { min-height: clamp(60px, 12vw, 120px) !important; }
 
 .footer { padding: clamp(2rem, 6vw, 5rem) 0 clamp(1rem, 3vw, 2rem) !important; }
 .footer-grid { grid-template-columns: 2fr 1fr 1fr !important; gap: clamp(1rem, 4vw, 4rem) !important; margin-bottom: clamp(1.5rem, 4vw, 4rem) !important; }
-.footer-heading { margin-bottom: clamp(0.75rem, 2vw, 1.5rem) !important; }
+.footer-heading { font-size: clamp(0.85rem, 3vw, 1.25rem) !important; margin-bottom: clamp(0.75rem, 2vw, 1.5rem) !important; white-space: nowrap !important; }
 .footer-links li { margin-bottom: clamp(0.35rem, 1vw, 0.75rem) !important; }
 
 /* Modal overrides */
