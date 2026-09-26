@@ -25,12 +25,15 @@ html {
   scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
   color: var(--text-dark);
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
   background-color: var(--bg-main);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Typography */
@@ -1111,6 +1114,9 @@ textarea.form-control {
   background-color: var(--primary-blue);
   color: white;
   padding: 5rem 0 2rem;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .footer-grid {
@@ -1118,6 +1124,14 @@ textarea.form-control {
   grid-template-columns: 2fr 1fr 1fr;
   gap: 4rem;
   margin-bottom: 4rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.footer-grid > * {
+  min-width: 0;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .footer-about p {
@@ -1337,6 +1351,13 @@ textarea.form-control { min-height: clamp(60px, 12vw, 120px) !important; }
 .modal-description h4 { margin-bottom: clamp(0.25rem, 1vw, 0.75rem) !important; }
 
 .whatsapp-btn { width: clamp(40px, 6vw, 60px) !important; height: clamp(40px, 6vw, 60px) !important; font-size: clamp(1.25rem, 3vw, 2rem) !important; bottom: clamp(1rem, 3vw, 2rem) !important; right: clamp(1rem, 3vw, 2rem) !important; }
+
+/* Global overflow protection for grids/flex items */
+.container > *, section > *, .footer-grid > *, .about-grid > *, .products-catalog-grid > *, .quality-grid > *, .contact-container > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
 
 /* Stage 6: Active Navigation Link */
 .nav-links a.active-nav {
