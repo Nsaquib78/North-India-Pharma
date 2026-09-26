@@ -1282,18 +1282,18 @@ section { padding: clamp(1.5rem, 6vw, 6rem) 0 !important; }
 .premium-image-wrapper { transform: scale(1) !important; margin-top: 0 !important; width: clamp(150px, 40vw, 600px) !important; }
 .premium-hero-img { height: clamp(200px, 40vw, 550px) !important; }
 .hero-trust-bar { 
-  padding: clamp(0.5rem, 2vw, 1.5rem) clamp(0.5rem, 4vw, 3rem) !important; 
-  gap: clamp(0.5rem, 2vw, 2rem) !important; 
+  padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 4vw, 3rem) !important; 
+  gap: clamp(1rem, 3vw, 2rem) !important; 
   border-radius: clamp(10px, 2vw, 20px) !important; 
   flex-direction: row !important;
   align-items: center !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto !important;
-  white-space: nowrap !important;
-  scrollbar-width: none;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  overflow-x: visible !important;
+  white-space: normal !important;
 }
 .hero-trust-bar::-webkit-scrollbar { display: none; }
-.trust-block { gap: clamp(0.25rem, 1vw, 1rem) !important; }
+.trust-block { gap: clamp(0.5rem, 2vw, 1rem) !important; min-width: 140px; }
 .trust-block i { width: clamp(25px, 4vw, 45px) !important; height: clamp(25px, 4vw, 45px) !important; font-size: clamp(0.75rem, 2vw, 1.5rem) !important; }
 .trust-block span { font-size: clamp(0.5rem, 1vw, 0.75rem) !important; }
 .trust-block strong { font-size: clamp(0.6rem, 1.5vw, 0.95rem) !important; }
